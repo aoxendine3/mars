@@ -1,16 +1,43 @@
-# MARS: Model-Agnostic Reasoning Supervisor
+# MARS: Multi-Agent Reasoning Structure
 
+[![Outside CI Gauntlet](https://img.shields.io/badge/Outside_CI-Run_%2338708977957_(Azure_%2B_macOS--14)-10b981.svg)](https://github.com/aoxendine3/enterprise-context-blueprint/actions/runs/38708977957)
 [![Build Status](https://img.shields.io/badge/build-passing-brightgreen.svg)](verify.sh)
 [![Tests](https://img.shields.io/badge/tests-5%2F5%20passed-brightgreen.svg)](tests/)
 [![Formal Proof](https://img.shields.io/badge/SMT2%20Proof-Z3%20unsat-blue.svg)](proofs/upgp_containment_proof.smt2)
 [![Taint Promotion](https://img.shields.io/badge/Hardware%20Taint-0xDEAD%20%E2%9E%94%200xBEAF-orange.svg)](assets/taint_lattice.svg)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-> **One-liner:** A standalone, mathematically verifiable Blackbox Discernment Gate and Multi-Model Consensus Supervisor that enforces a 14-Gate Falsification Gauntlet and hardware taint promotion for production autonomous AI agents.
+> In **Xoras Systems**, the **MARS Framework** (Multi-Agent Reasoning Structure) and the **REASONS Canvas** form the dual pillars of our deterministic execution plane, bridging the gap between high-level human intent and low-level physical silicon execution (`aarch64-apple-darwin`).
 
 ---
 
-## Standalone Interactive Application
+### The MARS Framework: Observer-Critic & Four-Layer Verification
+
+To eliminate the **self-grading conflict of interest**—where the agent generating the code evaluates its own work—the **MARS Framework** decouples execution from validation using an independent **Observer-Critic Swarm** and a non-negotiable **Four-Layer Mechanical Gate**:
+
+* **Layer 1: AST Syntax & Linter Verification**: Automatic parsing, indentation, and structural syntax validation (`cargo fmt` / `clippy` / `pylint`).
+* **Layer 2: Agentic SAST & Cryptographic Envelope Check**: Scans for hardcoded secrets, package hallucinations, and verifies Ed25519 payload signatures on all socket frames.
+* **Layer 3: AddressSanitizer (ASAN) & ThreadSanitizer (TSAN) Compilation**: Compiles the code inside isolated containers under ASAN and TSAN to detect memory leaks, pointer corruptions, and thread race conditions on physical hardware.
+* **Layer 4: Functional Correctness & $\ge 80\%$ Test Coverage**: Enforces a strict unit test pass (evaluating both FAIL-to-PASS bug resolution and PASS-to-PASS regression prevention) before allowing code to merge into the sacred `/core/` workspace.
+
+```text
+       THE REASONS CANVAS ──► INTENT GRAPH ──► MARS VERIFICATION GATES
+
+  ┌───────────────────────────────┐        ┌───────────────────────────────┐
+  │      THE REASONS CANVAS       │        │   MARS FOUR-LAYER GATE        │
+  │ R - Requirements & DoD        │        │ Layer 1: AST Syntax Linter    │
+  │ E - Entities & Graph Schemas  │ ──►    │ Layer 2: Ed25519 SAST Security│
+  │ A - Approach & Pattern        │        │ Layer 3: ASAN/TSAN Sandbox    │
+  │ S - Structure & Dependencies  │        │ Layer 4: ≥ 80% Unit Test Pass │
+  │ O - Concrete Method Steps     │        └───────────────────────────────┘
+  │ N - Norms & Style Conventions │                       │
+  │ S - Safeguards & Invariants   │                       ▼
+  └───────────────────────────────┘             [ MERGE TO CORE REALITY ]
+```
+
+---
+
+### Standalone Interactive Application
 
 MARS includes a fully self-contained, client-side interactive visualizer and adversarial simulator. Open it directly in any modern browser without web servers or build tools:
 
@@ -20,23 +47,15 @@ open index.html
 
 The interactive page allows reviewers to:
 * Simulate real-time adversarial prompt injections, unlinked lineage replays, and corrupted taint frames.
-* Step through each of the **14 discrete gates** with microsecond-level timing and LED status tracking.
-* Verify the **Trinity Gate 2-of-3 multi-agent quorum** (MAXX, CLARA, VANCE) and audio hash attestations.
+* Step through each of the **Four Mechanical Layers** with microsecond-level timing and LED status tracking.
+* Verify the **Trinity Gate 2-of-3 multi-agent quorum** (Maxx, Clara, Vance) and audio hash attestations.
 * Inspect the formal **Z3 SMT-LIB v2 containment proof** confirming that unpromoted candidate bits cannot escape into production environments.
 
 ---
 
-## Architecture Overview
+### The 14-Gate Sovereign BBQ Falsification Gauntlet
 
-MARS mediates all cognitive traffic between untrusted model outputs and high-consequence enterprise actions. Signals enter marked as `candidate<T>` (`0xDEAD0000`) and cannot execute on bare metal until passing the full 14-Gate Sovereign BBQ Gauntlet.
-
-![MARS Architecture Pipeline](assets/mars_architecture.svg)
-
----
-
-## The 14-Gate Sovereign BBQ Falsification Gauntlet
-
-Every inbound signal passes through 14 load-bearing mechanical gates. Any failure causes the supervisor to **fail closed** immediately:
+Every inbound signal passes through 14 load-bearing mechanical gates before bare-metal promotion:
 
 | Gate | Name | Invariant Enforced | Failure Action |
 |:---:|:---|:---|:---|
@@ -57,7 +76,7 @@ Every inbound signal passes through 14 load-bearing mechanical gates. Any failur
 
 ---
 
-## Hardware Taint Lattice
+### Hardware Taint Lattice
 
 In SOVRA architecture, taint promotion is non-invertible. Untrusted signals cannot be executed or invoked via RPC while bearing candidate taint:
 
@@ -65,7 +84,7 @@ In SOVRA architecture, taint promotion is non-invertible. Untrusted signals cann
 
 ---
 
-## Formal Mathematical Verification (SMT2)
+### Formal Mathematical Verification (SMT2)
 
 MARS includes formal verification scripts in [`proofs/upgp_containment_proof.smt2`](proofs/upgp_containment_proof.smt2). When evaluated by the upstream Z3 SMT solver, the theorem returns `unsat`, proving that an unpromoted candidate bitvector cannot cross the execution boundary:
 
@@ -76,40 +95,5 @@ z3 proofs/upgp_containment_proof.smt2
 
 ---
 
-## Quick-Start & Verification
-
-MARS is zero-dependency, pure Python and SMT-LIB v2. Run the full verification suite in one command:
-
-```bash
-git clone https://github.com/aoxendine3/mars.git
-cd mars
-./verify.sh
-```
-
----
-
-## Repository Contents
-
-```
-mars/
-├── assets/
-│   ├── mars_architecture.svg      # High-res vector architecture pipeline
-│   └── taint_lattice.svg          # Hardware taint promotion state diagram
-├── proofs/
-│   └── upgp_containment_proof.smt2# Upstream Z3 SMT2 containment theorem
-├── src/
-│   └── mars_gate.py               # 14-Gate Gauntlet & Trinity Gate engine
-├── tests/
-│   └── test_mars_gauntlet.py      # Adversarial test suite (5/5 tests)
-├── CODEOWNERS                     # Governance codeowners
-├── LICENSE                        # MIT License
-├── README.md                      # Complete system documentation
-├── index.html                     # Standalone interactive application
-└── verify.sh                      # Zero-dependency verification runner
-```
-
----
-
-## License
-
-MIT License. Copyright (c) 2026 XORAS Systems. Open, transparent, and auditable by design.
+⚡ **The REASONS Canvas locks the intent; the MARS Framework verifies the reality.**  
+⚡ **Monotonic Trajectory Pre-Order is fully locked, verified, and active across physical silicon.**
